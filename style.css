@@ -1,0 +1,586 @@
+/* ===== Google-Style Homepage CSS (Light Theme) ===== */
+@import url('https://fonts.googleapis.com/css2?family=Product+Sans:wght@400;500;700&family=Inter:wght@300;400;500;600&family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --bg-surface: #ffffff;
+  --bg-hover: #f1f3f4;
+  --text-primary: #202124;
+  --text-secondary: #5f6368;
+  --text-tertiary: #3c4043;
+  --border-color: #dfe1e5;
+  --search-bg: #ffffff;
+  --search-hover: #ffffff;
+  --google-blue: #4285f4;
+  --google-red: #ea4335;
+  --google-yellow: #fbbc05;
+  --google-green: #34a853;
+  --accent-gradient: linear-gradient(135deg, #4285f4, #a142f4);
+  --shadow-soft: 0 1px 6px rgba(32, 33, 36, 0.12);
+  --shadow-medium: 0 4px 12px rgba(32, 33, 36, 0.16);
+  --shadow-strong: 0 8px 24px rgba(32, 33, 36, 0.2);
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-full: 9999px;
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+  --transition-slow: 0.5s ease;
+}
+
+/* ===== Reset & Base ===== */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* ===== Background Gradient Effect ===== */
+body::before {
+  content: '';
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(ellipse at 30% 20%, rgba(66, 133, 244, 0.04) 0%, transparent 50%),
+              radial-gradient(ellipse at 70% 80%, rgba(161, 66, 244, 0.03) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ===== Top Navigation (SDU Logo) ===== */
+.top-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 16px 20px;
+  z-index: 100;
+  animation: fadeInDown 0.6s ease;
+}
+
+.sdu-logo-link {
+  text-decoration: none;
+  display: block;
+}
+
+.sdu-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(223, 225, 229, 0.6);
+  transition: all var(--transition-normal);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+}
+
+.sdu-logo:hover {
+  background: #ffffff;
+  border-color: rgba(66, 133, 244, 0.4);
+  box-shadow: 0 4px 12px rgba(32, 33, 36, 0.15), 0 0 0 1px rgba(66, 133, 244, 0.15);
+  transform: translateY(-1px);
+}
+
+.sdu-logo-icon {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+}
+
+.sdu-logo-icon svg {
+  width: 100%;
+  height: 100%;
+  border-radius: 6px;
+}
+
+/* ===== Main Container ===== */
+.main-container {
+  width: 100%;
+  max-width: 680px;
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ===== Time & Date ===== */
+.datetime-section {
+  text-align: center;
+  animation: fadeInDown 0.8s ease;
+}
+
+.current-time {
+  font-size: 4rem;
+  font-weight: 300;
+  letter-spacing: -2px;
+  color: var(--text-primary);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.current-date {
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: var(--text-secondary);
+  letter-spacing: 0.5px;
+}
+
+/* ===== Google Logo ===== */
+.logo-section {
+  animation: fadeInDown 0.6s ease;
+}
+
+.google-logo {
+  display: flex;
+  align-items: baseline;
+  gap: 0;
+  user-select: none;
+}
+
+.google-logo span {
+  font-family: 'Product Sans', 'Inter', sans-serif;
+  font-size: 5.5rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.google-logo .g1 { color: #4285f4; }
+.google-logo .o1 { color: #ea4335; }
+.google-logo .o2 { color: #fbbc05; }
+.google-logo .g2 { color: #4285f4; }
+.google-logo .l  { color: #34a853; }
+.google-logo .e  { color: #ea4335; }
+
+/* ===== Search Section ===== */
+.search-section {
+  width: 100%;
+  animation: fadeInUp 0.6s ease 0.1s both;
+}
+
+.search-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.search-bar {
+  width: 100%;
+  height: 52px;
+  padding: 0 52px;
+  font-size: 1rem;
+  font-family: 'Inter', 'Noto Sans KR', sans-serif;
+  color: var(--text-primary);
+  background: var(--search-bg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-full);
+  outline: none;
+  transition: all var(--transition-fast);
+}
+
+.search-bar::placeholder {
+  color: var(--text-secondary);
+}
+
+.search-bar:hover {
+  box-shadow: var(--shadow-soft);
+  border-color: #c6c9cd;
+}
+
+.search-bar:focus {
+  border-color: transparent;
+  box-shadow: var(--shadow-medium);
+}
+
+.search-icon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+  color: var(--text-secondary);
+  pointer-events: none;
+}
+
+.search-clear {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 28px;
+  height: 28px;
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background var(--transition-fast);
+  font-size: 1.1rem;
+}
+
+.search-clear.visible {
+  display: flex;
+}
+
+.search-clear:hover {
+  background: var(--bg-hover);
+}
+
+.search-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.search-btn {
+  padding: 0 20px;
+  height: 38px;
+  font-size: 0.85rem;
+  font-family: 'Inter', 'Noto Sans KR', sans-serif;
+  font-weight: 500;
+  color: var(--text-secondary);
+  background: var(--bg-secondary);
+  border: 1px solid var(--bg-secondary);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.search-btn:hover {
+  border-color: var(--border-color);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+  color: var(--text-primary);
+}
+
+/* ===== Weather Section ===== */
+.weather-section {
+  width: 100%;
+  animation: fadeInUp 0.6s ease 0.2s both;
+}
+
+.weather-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.weather-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: all var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+}
+
+.weather-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+  opacity: 0;
+  transition: opacity var(--transition-normal);
+}
+
+.weather-card.seoul::before {
+  background: linear-gradient(90deg, #4285f4, #8ab4f8);
+}
+
+.weather-card.jeju::before {
+  background: linear-gradient(90deg, #34a853, #81c995);
+}
+
+.weather-card:hover {
+  border-color: #c6c9cd;
+  box-shadow: var(--shadow-soft);
+  transform: translateY(-2px);
+}
+
+.weather-card:hover::before {
+  opacity: 1;
+}
+
+.weather-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.weather-city {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-tertiary);
+  letter-spacing: 0.3px;
+}
+
+.weather-icon {
+  font-size: 1.8rem;
+  line-height: 1;
+}
+
+.weather-body {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+}
+
+.weather-temp {
+  font-size: 2.2rem;
+  font-weight: 300;
+  color: var(--text-primary);
+  line-height: 1;
+}
+
+.weather-temp .unit {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  font-weight: 400;
+}
+
+.weather-desc {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  margin-bottom: 4px;
+}
+
+.weather-details {
+  display: flex;
+  gap: 14px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(223, 225, 229, 0.8);
+}
+
+.weather-detail {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+.weather-detail-icon {
+  font-size: 0.85rem;
+  opacity: 0.8;
+}
+
+.weather-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100px;
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+}
+
+.weather-loading .spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--border-color);
+  border-top-color: var(--google-blue);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin-right: 8px;
+}
+
+.weather-error {
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  text-align: center;
+  padding: 16px;
+}
+
+/* ===== Quote Section ===== */
+.quote-section {
+  width: 100%;
+  text-align: center;
+  animation: fadeInUp 0.6s ease 0.3s both;
+}
+
+.quote-container {
+  padding: 24px 20px;
+  border-radius: var(--radius-md);
+  position: relative;
+}
+
+.quote-mark {
+  font-size: 2.5rem;
+  line-height: 1;
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 8px;
+  display: block;
+  font-family: Georgia, serif;
+}
+
+.quote-text {
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--text-tertiary);
+  line-height: 1.7;
+  margin-bottom: 12px;
+  font-style: italic;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  transition: opacity var(--transition-normal);
+}
+
+.quote-author {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  transition: opacity var(--transition-normal);
+}
+
+.quote-author::before {
+  content: '— ';
+}
+
+.quote-refresh {
+  margin-top: 12px;
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 0.75rem;
+  cursor: pointer;
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  transition: all var(--transition-fast);
+  font-family: 'Inter', 'Noto Sans KR', sans-serif;
+}
+
+.quote-refresh:hover {
+  background: var(--bg-hover);
+  color: var(--text-tertiary);
+}
+
+/* ===== Footer ===== */
+.footer {
+  width: 100%;
+  text-align: center;
+  padding: 20px;
+  color: var(--text-secondary);
+  font-size: 0.75rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* ===== Animations ===== */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fadeSwitch {
+  0% { opacity: 1; }
+  45% { opacity: 0; }
+  55% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 600px) {
+  .main-container {
+    padding: 16px;
+    gap: 24px;
+  }
+
+  .current-time {
+    font-size: 3rem;
+  }
+
+  .google-logo span {
+    font-size: 3.5rem;
+  }
+
+  .search-bar {
+    height: 46px;
+    font-size: 0.9rem;
+  }
+
+  .weather-cards {
+    gap: 10px;
+  }
+
+  .weather-card {
+    padding: 14px 16px;
+  }
+
+  .weather-temp {
+    font-size: 1.8rem;
+  }
+
+  .quote-text {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .weather-cards {
+    grid-template-columns: 1fr;
+  }
+}
